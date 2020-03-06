@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:ForceOfWillCube.ViewModels.MainPage" 
+             mc:Ignorable="d"
+             Title="{Binding Title, Mode=OneWay}"
+             x:Class="ForceOfWillCube.MainPage"
+             Visual="Material">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Signin" Command="{Binding SwithUserCommand}" Order="Primary" />
+        <ToolbarItem Text="Add" Command="{Binding AddCollectionToolbarCommand}" Order="Secondary" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="{StaticResource PrimaryColor}">
+
+                <!-- 1. Profile Picture-->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200"/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Visual="Material"
+                        Grid.Row="0" VerticalOptions="End" 
+                        Padding="20,20,20,50">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Username, StringFormat='{0} &#10;'}" FontSize="25" 
+                                  FontAttributes="Bold" ForegroundColor="White" />
+                                <Span Text="&#10;" FontSize="17" 
+                                  ForegroundColor="White" />
+                                <Span Text="ID 12345678" FontSize="17" 
+                                  ForegroundColor="White" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+
+                <!-- 2. Contact information frame-->
+                <Frame
+                    CornerRadius="20" Margin="0,-50,0,0"
+                    BackgroundColor="#fbfaff" HasShadow="False"
+                    HeightRequest="300"/>
+
+                <!-- It will contain blocks: 3, 4 and 5 -->
+                <Grid Margin="30, -320, 30, 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="210"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- 3. Your balance -->
+                    <Label
+                        Visual="Material"
+                        Grid.Row="0" Grid.Column="0"
+                        Text="Your balance" TextColor="Silver"/>
+                    <Label
+                        Visual="Material"
+                        Grid.Row="1" Grid.Column="0"
+                        Text="$ 6,750.00" FontAttributes="Bold"
+                        FontSize="30"/>
+                    <Label
+                        Visual="Material"
+                        Grid.Row="1" Grid.Column="1"
+                        Text="..." HorizontalOptions="End" />
+
+                    <!-- 4. Cards-->
+                    <Label
+                        Visual="Material"
+                        Grid.Row="2" Grid.Column="0" 
+                        Text="YOUR COLLECTIONS" TextColor="Silver" 
+                        Margin="0,20,0,0"/>
+                    <CollectionView
+                        Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Collections}" VerticalOptions="Start"
+                        ItemsLayout="HorizontalList" IsTabStop="True">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout WidthRequest="280">
+
+                                        <Grid Margin="20,0,20,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label 
+                                            Visual="Material"
+                                            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                            Text="{Binding Id, StringFormat='Id: {0}'}"
+                                                TextColor="PapayaWhip" 
+                                            FontAttributes="Bold" FontSize="18"/>
+
+                                            <Label 
+                                                Visual="Material"
+                                                Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
+                                                Text="{Binding Name, StringFormat='Name: {0}'}"
+                                                TextColor="PapayaWhip" 
+                                            FontAttributes="Bold" FontSize="20" />
+
+                                            <Label 
+                                                Visual="Material"
+                                                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                                Text="{Binding UserId, StringFormat='UserId: {0}'}"
+                                                TextColor="PapayaWhip"
+                                                FontSize="20" />
+
+                                            <Label 
+                                                Visual="Material"
+                                                Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
+                                                Text="{Binding CreationDate, StringFormat='CreationDate: {0}'}"
+                                                TextColor="PapayaWhip"
+                                                FontSize="20" />
+
+                                            <StackLayout
+                                                Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"
+                                                Orientation="Horizontal">
+
+                                                <Button
+                                                    Visual="Material" Text="Esplora"
+                                                    Grid.Row="3" Grid.Column="0"
+                                                    />
+
+                                                <Button
+                                                    Visual="Material" Text="Cancella"
+                                                    Grid.Row="3" Grid.Column="2"
+                                                    />
+                                                
+                                            </StackLayout>
+
+                                        </Grid>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

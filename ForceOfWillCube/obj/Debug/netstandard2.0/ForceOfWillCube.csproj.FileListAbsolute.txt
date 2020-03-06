@@ -1,0 +1,17 @@
+D:\work\ForceOfWillCube\ForceOfWillCube\bin\Debug\netstandard2.0\ForceOfWillCube.deps.json
+D:\work\ForceOfWillCube\ForceOfWillCube\bin\Debug\netstandard2.0\ForceOfWillCube.dll
+D:\work\ForceOfWillCube\ForceOfWillCube\bin\Debug\netstandard2.0\ref\ForceOfWillCube.dll
+D:\work\ForceOfWillCube\ForceOfWillCube\bin\Debug\netstandard2.0\ForceOfWillCube.pdb
+D:\work\ForceOfWillCube\ForceOfWillCube\obj\Debug\netstandard2.0\ForceOfWillCube.Utils.AppStrings.resources
+D:\work\ForceOfWillCube\ForceOfWillCube\obj\Debug\netstandard2.0\ForceOfWillCube.csproj.GenerateResource.cache
+D:\work\ForceOfWillCube\ForceOfWillCube\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\work\ForceOfWillCube\ForceOfWillCube\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+D:\work\ForceOfWillCube\ForceOfWillCube\obj\Debug\netstandard2.0\Views\DrawerPage.xaml.g.cs
+D:\work\ForceOfWillCube\ForceOfWillCube\obj\Debug\netstandard2.0\Views\DrawerPageDetail.xaml.g.cs
+D:\work\ForceOfWillCube\ForceOfWillCube\obj\Debug\netstandard2.0\Views\DrawerPageMaster.xaml.g.cs
+D:\work\ForceOfWillCube\ForceOfWillCube\obj\Debug\netstandard2.0\ForceOfWillCube.AssemblyInfoInputs.cache
+D:\work\ForceOfWillCube\ForceOfWillCube\obj\Debug\netstandard2.0\ForceOfWillCube.AssemblyInfo.cs
+D:\work\ForceOfWillCube\ForceOfWillCube\obj\Debug\netstandard2.0\XamlC.stamp
+D:\work\ForceOfWillCube\ForceOfWillCube\obj\Debug\netstandard2.0\ForceOfWillCube.dll
+D:\work\ForceOfWillCube\ForceOfWillCube\obj\Debug\netstandard2.0\ref\ForceOfWillCube.dll
+D:\work\ForceOfWillCube\ForceOfWillCube\obj\Debug\netstandard2.0\ForceOfWillCube.pdb
