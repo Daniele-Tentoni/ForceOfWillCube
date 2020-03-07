@@ -30,6 +30,12 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+ForceOfWillCube.NUnit/[Oo]bj/
+ForceOfWillCube.iOS/[Oo]bj/
+ForceOfWillCube.Android/[Bb]in/
+ForceOfWillCube.Android/[Oo]bj/
+ForceOfWillCube/[Bb]in/
+ForceOfWillCube/[Oo]bj/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -348,9 +354,3 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-ForceOfWillCube.NUnit/obj
-ForceOfWillCube.iOS/obj
-ForceOfWillCube.Android/bin
-ForceOfWillCube.Android/obj
-ForceOfWillCube/bin
-ForceOfWillCube/obj
