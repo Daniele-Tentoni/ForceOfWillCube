@@ -61,11 +61,56 @@ namespace ForceOfWillCube.Utils {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Bad!.
+        /// </summary>
+        internal static string Bad {
+            get {
+                return ResourceManager.GetString("Bad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Bad done, bad job..
+        /// </summary>
+        internal static string BadDone {
+            get {
+                return ResourceManager.GetString("BadDone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Great!.
+        /// </summary>
+        internal static string Great {
+            get {
+                return ResourceManager.GetString("Great", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Main Page.
         /// </summary>
         internal static string MainPageTitle {
             get {
                 return ResourceManager.GetString("MainPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a New Collection.
+        /// </summary>
+        internal static string NewCollection {
+            get {
+                return ResourceManager.GetString("NewCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Well done, good job..
+        /// </summary>
+        internal static string WellDone {
+            get {
+                return ResourceManager.GetString("WellDone", resourceCulture);
             }
         }
     }

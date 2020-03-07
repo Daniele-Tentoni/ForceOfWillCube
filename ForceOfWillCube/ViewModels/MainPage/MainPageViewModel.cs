@@ -2,14 +2,16 @@
 {
     using ForceOfWillCube.Models.Collections;
     using ForceOfWillCube.Utils;
-    using System;
     using System.Collections.ObjectModel;
-    using System.Diagnostics;
+    using System.Collections.Specialized;
+    using System.ComponentModel;
+    using System.Linq;
     using Xamarin.Forms;
     using Xamarin.Forms.Internals;
 
     public class MainPageViewModel : BaseViewModel
     {
+        private const string LOG_TAG = nameof(MainPageViewModel);
         private ObservableCollection<FowCollection> _collections;
         public ObservableCollection<FowCollection> Collections
         {
@@ -26,16 +28,18 @@
 
         public Command SwithUserCommand { get; set; }
         public Command AddCollectionToolbarCommand { get; set; }
-        public Command DeleteCollectionCommand { get; set; }
+        public Command DeleteCollectionSwipeInvoke { get; set; }
 
         public MainPageViewModel()
         {
             this.Title = AppStrings.MainPageTitle;
-            this.UpdateCollections();
+            var collections = App.Local.GetAllCollections().Result;
+            this.Collections = new ObservableCollection<FowCollection>(collections);
+            this.PropertyChanged += this.CatchPropertyChanged;
             this.Username = DependencyService.Get<IAuthenticatorManager>().GetSignedUser().Username;
             this.SwithUserCommand = new Command(() => this.SwitchUser());
             this.AddCollectionToolbarCommand = new Command(() => this.CreateCollectionModal());
-            this.DeleteCollectionCommand = new Command(itemId => this.ExcecuteDeleteCollectionCommandAsync((FowCollection)itemId));
+            this.DeleteCollectionSwipeInvoke = new Command(itemId => this.ExcecuteDeleteCollectionCommandAsync((FowCollection)itemId));
 
             MessagingCenter.Subscribe<MainPageViewModel, string>(this, "Hello", (obj, item) =>
             {
@@ -45,6 +49,8 @@
                 });
             });
         }
+
+        private void CatchPropertyChanged(object sender, PropertyChangedEventArgs e) => Log.Warning("a", "b");
 
         private void SwitchUser()
         {
@@ -62,27 +68,6 @@
             }
         }
 
-        private async void UpdateCollections()
-        {
-            if (this.IsBusy)
-                return;
-            this.IsBusy = true;
-
-            try
-            {
-                var collections = await App.Local.GetAllCollections();
-                this.Collections = new ObservableCollection<FowCollection>(collections);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.StackTrace);
-            }
-            finally
-            {
-                this.IsBusy = false;
-            }
-        }
-
         private async void CreateCollectionModal()
         {
             if (this.IsBusy)
@@ -92,7 +77,7 @@
             string name = string.Empty;
             await Device.InvokeOnMainThreadAsync(async () =>
             {
-                name = await Application.Current.MainPage.DisplayPromptAsync("New collection",
+                name = await Application.Current.MainPage.DisplayPromptAsync(AppStrings.NewCollection,
                                                                              "Input the name of the new collection",
                                                                              "Ok",
                                                                              "Cancel",
@@ -101,24 +86,27 @@
                                                                              Keyboard.Text,
                                                                              string.Empty);
             });
-            var res = await App.Local.InsertCollectionAsync(new FowCollection { Name = name ?? "New collection", UserId = 1 });
+            var newCollection = new FowCollection { Name = name ?? "New collection", UserId = 1 };
+            var collectionAdded = await App.Local.InsertCollectionAsync(newCollection);
             await Device.InvokeOnMainThreadAsync(async () =>
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "New Collection", res == 1 ? "Well done, good job." : "Bad done, bad job.", res == 1 ? "Great!" : "Bad!");
+                    AppStrings.NewCollection, 
+                    collectionAdded != null ? AppStrings.WellDone : AppStrings.BadDone,   
+                    collectionAdded != null ? AppStrings.Great : AppStrings.Bad);
             });
 
+            this.Collections.Add(collectionAdded);
             this.IsBusy = false;
-            this.UpdateCollections();
         }
 
-        private async void ExcecuteDeleteCollectionCommandAsync(FowCollection collectionId)
+        private async void ExcecuteDeleteCollectionCommandAsync(FowCollection collection)
         {
             if (this.IsBusy)
                 return;
             this.IsBusy = true;
 
-            var res = await App.Local.DeleteCollectionById(collectionId.Id);
+            var res = await App.Local.DeleteCollectionById(collection.Id);
             await Device.InvokeOnMainThreadAsync(async () =>
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -127,8 +115,9 @@
                     res == 1 ? "Great!" : "Bad!");
             });
 
+            this.Collections.RemoveAt(this.Collections.IndexOf(i => i.Id == collection.Id));
+            this.OnPropertyChanged(nameof(this.Collections));
             this.IsBusy = false;
-            this.UpdateCollections();
         }
     }
 }

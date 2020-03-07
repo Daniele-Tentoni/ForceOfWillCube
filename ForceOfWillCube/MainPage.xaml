@@ -82,74 +82,55 @@
                         Text="YOUR COLLECTIONS" TextColor="Silver" 
                         Margin="0,20,0,0"/>
                     <CollectionView
+                        x:Name="MyFowCollectionView"
                         Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                         ItemsSource="{Binding Collections}" VerticalOptions="Start"
-                        ItemsLayout="HorizontalList" IsTabStop="True">
+                        ItemsLayout="VerticalList" IsTabStop="True">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout WidthRequest="280">
+                                <SwipeView x:Name="FowCollectionItem">
+                                    <SwipeView.LeftItems>
+                                        <SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
+                                            <SwipeItem
+                                                IsDestructive="True" 
+                                                Text="Delete" IconImageSource="delete.png"
+                                                Command="{Binding DeleteCollectionSwipeInvoke}"
+                                                BindingContext="{Binding Source={x:Reference MyFowCollectionView}, Path=BindingContext}"
+                                                CommandParameter="{Binding Source={x:Reference FowCollectionItem}, Path=BindingContext}" />
+                                        </SwipeItems>
+                                    </SwipeView.LeftItems>
 
-                                        <Grid Margin="20,0,20,0">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
+                                    <Grid Margin="20,0,20,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
 
-                                            <Label 
+                                        <Label 
                                             Visual="Material"
-                                            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-                                            Text="{Binding Id, StringFormat='Id: {0}'}"
-                                                TextColor="PapayaWhip" 
+                                            Grid.Row="0" Grid.Column="0"
+                                            Text="{Binding Id, StringFormat='N: {0}'}"
                                             FontAttributes="Bold" FontSize="18"/>
 
-                                            <Label 
-                                                Visual="Material"
-                                                Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
-                                                Text="{Binding Name, StringFormat='Name: {0}'}"
-                                                TextColor="PapayaWhip" 
+                                        <Label
+                                            Visual="Material"
+                                            Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
+                                            Text="{Binding Name, StringFormat='{0}'}"
                                             FontAttributes="Bold" FontSize="20" />
 
-                                            <Label 
-                                                Visual="Material"
-                                                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                                                Text="{Binding UserId, StringFormat='UserId: {0}'}"
-                                                TextColor="PapayaWhip"
-                                                FontSize="20" />
+                                        <Label
+                                            Visual="Material"
+                                            Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                            Text="{Binding UserId, StringFormat='UserId: {0}'}" />
 
-                                            <Label 
-                                                Visual="Material"
-                                                Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
-                                                Text="{Binding CreationDate, StringFormat='CreationDate: {0}'}"
-                                                TextColor="PapayaWhip"
-                                                FontSize="20" />
-
-                                            <StackLayout
-                                                Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="4"
-                                                Orientation="Horizontal">
-
-                                                <Button
-                                                    Visual="Material" Text="Esplora"
-                                                    Grid.Row="3" Grid.Column="0"
-                                                    />
-
-                                                <Button
-                                                    Visual="Material" Text="Cancella"
-                                                    Grid.Row="3" Grid.Column="2"
-                                                    />
-                                                
-                                            </StackLayout>
-
-                                        </Grid>
-                                    </StackLayout>
-                                </ViewCell>
+                                    </Grid>
+                                </SwipeView>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
