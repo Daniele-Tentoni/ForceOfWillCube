@@ -348,3 +348,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+ForceOfWillCube.NUnit/obj
+ForceOfWillCube.iOS/obj
+ForceOfWillCube.Android/bin
+ForceOfWillCube.Android/obj
+ForceOfWillCube/bin
+ForceOfWillCube/obj
