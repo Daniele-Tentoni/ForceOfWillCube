@@ -2,6 +2,7 @@
 {
     using Foundation;
     using UIKit;
+    using Xamarin.Forms;
 
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
@@ -18,8 +19,9 @@
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
-            global::Xamarin.Forms.FormsMaterial.Init();
+            Forms.SetFlags("SwipeView_Experimental");
+            Forms.Init();
+            FormsMaterial.Init();
             this.LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

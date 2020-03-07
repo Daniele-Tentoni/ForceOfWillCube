@@ -1,22 +1,28 @@
 ﻿namespace ForceOfWillCube.Models
 {
     using ForceOfWillCube.Models.Collections;
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
+    using Xamarin.Forms.Internals;
 
     public partial class Database
     {
         #region Create
 
-        public async Task<int> InsertCollectionAsync(FowCollection collection) =>
+        public async Task<FowCollection> InsertCollectionAsync(FowCollection collection)
+        {
             await this._database.InsertAsync(collection, typeof(FowCollection));
+            return this._database.Table<FowCollection>().ToListAsync().Result.Last();
+        }
 
         #endregion
 
         #region Read
 
-        public async Task<List<FowCollection>> GetAllCollections() =>
-            await this._database.Table<FowCollection>().ToListAsync();
+        public Task<List<FowCollection>> GetAllCollections() =>
+            this._database.Table<FowCollection>().ToListAsync();
 
         public async Task<FowCollection> GetCollectionByIdAsync(int collectionId) =>
             await this._database.FindAsync<FowCollection>(collectionId);

@@ -18,9 +18,10 @@
 
             base.OnCreate(savedInstanceState);
 
+            Forms.SetFlags("SwipeView_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
+            Forms.Init(this, savedInstanceState);
+            FormsMaterial.Init(this, savedInstanceState);
 
             DependencyService.Register<IAuthenticatorManager, AuthenticatorManager>();
             this.LoadApplication(new App());
