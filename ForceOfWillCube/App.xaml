@@ -14,7 +14,15 @@
 
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryColor}" />
-                
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryLightColor}" />
+            </Style>
+
+            <Style x:Key="BaseLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+            </Style>
+
+            <Style x:Key="FalseLabel" BasedOn="{StaticResource BaseLabel}" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryDarkColor}" />
             </Style>
 
             <Style x:Key="CardStyle" TargetType="Frame">

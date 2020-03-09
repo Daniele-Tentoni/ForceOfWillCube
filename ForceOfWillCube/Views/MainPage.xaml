@@ -15,30 +15,18 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout BackgroundColor="{StaticResource PrimaryColor}">
-
+            <StackLayout>
                 <!-- 1. Profile Picture-->
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="200"/>
-                    </Grid.RowDefinitions>
-
-                    <Label
-                        Visual="Material"
-                        Grid.Row="0" VerticalOptions="End" 
-                        Padding="20,20,20,50">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{Binding Username, StringFormat='{0} &#10;'}" FontSize="25" 
-                                  FontAttributes="Bold" ForegroundColor="White" />
-                                <Span Text="&#10;" FontSize="17" 
-                                  ForegroundColor="White" />
-                                <Span Text="ID 1234567890" FontSize="17" 
-                                  ForegroundColor="White" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </Grid>
+                <Label Visual="Material" Padding="20,20,20,50" Style="{StaticResource Key=BaseLabel}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Username, StringFormat='{0} &#10;'}"
+                                  FontSize="25" FontAttributes="Bold"  />
+                            <Span Text="&#10;" FontSize="17" />
+                            <Span Text="ID 1234567890" FontSize="17" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
 
                 <!-- 2. Contact information frame-->
                 <Frame
