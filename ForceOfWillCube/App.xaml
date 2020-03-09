@@ -12,9 +12,14 @@
             <Color x:Key="PrimaryDarkColor">#000a12</Color>
             <Color x:Key="PrimaryTextColor">#ffffff</Color>
 
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryColor}" />
+                
+            </Style>
+
             <Style x:Key="CardStyle" TargetType="Frame">
                 <Setter Property="BackgroundColor" Value="{d:StaticResource PrimaryLightColor}" />
-                <Setter Property="Margin" Value="5" />
+                <Setter Property="Margin" Value="10" />
                 <Setter Property="CornerRadius" Value="10" />
                 <Setter Property="HasShadow" Value="True" />
             </Style>

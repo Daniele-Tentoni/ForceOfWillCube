@@ -6,12 +6,16 @@
     using System.Collections.Specialized;
     using System.ComponentModel;
     using System.Linq;
+    using System.Threading.Tasks;
     using Xamarin.Forms;
     using Xamarin.Forms.Internals;
 
     public class MainPageViewModel : BaseViewModel
     {
         private const string LOG_TAG = nameof(MainPageViewModel);
+        public string AddCollectionText => AppStrings.NewCollection;
+        public string DeleteCommandText => "Delete";
+
         private ObservableCollection<FowCollection> _collections;
         public ObservableCollection<FowCollection> Collections
         {
@@ -54,16 +58,10 @@
             string name = string.Empty;
             await Device.InvokeOnMainThreadAsync(async () =>
             {
-                name = await Application.Current.MainPage.DisplayPromptAsync(AppStrings.NewCollection,
-                                                                             "Input the name of the new collection",
-                                                                             "Ok",
-                                                                             "Cancel",
-                                                                             "Name",
-                                                                             -1,
-                                                                             Keyboard.Text,
-                                                                             string.Empty);
+                name = await this.DisplayInputCollectionNamePrompt();
             });
-            var newCollection = new FowCollection { Name = name ?? "New collection", UserId = 1 };
+
+            var newCollection = new FowCollection { Name = name ?? AppStrings.NewCollection, UserId = this.UserId };
             var collectionAdded = await App.Local.InsertCollectionAsync(newCollection);
             await Device.InvokeOnMainThreadAsync(async () =>
             {
@@ -87,14 +85,23 @@
             await Device.InvokeOnMainThreadAsync(async () =>
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Delete collection",
-                    res == 1 ? "You have correctly deleted the collection." : "Bad done, bad job.",
-                    res == 1 ? "Great!" : "Bad!");
+                    AppStrings.DeleteCollection,
+                    res == 1 ? AppStrings.CorrectlyDeleteCollection : AppStrings.BadDone,
+                    res == 1 ? AppStrings.WellDone : AppStrings.Bad);
             });
 
             this.Collections.RemoveAt(this.Collections.IndexOf(i => i.Id == collection.Id));
             this.OnPropertyChanged(nameof(this.Collections));
             this.IsBusy = false;
         }
+
+        private Task<string> DisplayInputCollectionNamePrompt() => Application.Current.MainPage.DisplayPromptAsync(AppStrings.NewCollection,
+                                                                            AppStrings.InputCollectionName,
+                                                                            AppStrings.Ok,
+                                                                            AppStrings.Cancel,
+                                                                            AppStrings.Name,
+                                                                            -1,
+                                                                            Keyboard.Text,
+                                                                            string.Empty);
     }
 }

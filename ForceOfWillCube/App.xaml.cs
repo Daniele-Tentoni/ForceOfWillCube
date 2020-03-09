@@ -1,6 +1,8 @@
 ﻿namespace ForceOfWillCube
 {
     using ForceOfWillCube.Models;
+    using ForceOfWillCube.Utils;
+    using ForceOfWillCube.Views;
     using System;
     using System.IO;
     using Xamarin.Forms;
@@ -18,12 +20,24 @@
             }
         }
 
+        private static AuthenticatorManager _authManager;
+        public static AuthenticatorManager AuthenticatorManager
+        {
+            get
+            {
+                if (_authManager == null)
+                    _authManager = new AuthenticatorManager();
+                return _authManager;
+            }
+        }
+
         public App()
         {
             this.InitializeComponent();
 
             // TODO: Manage authentication.
-            this.MainPage = new NavigationPage(new MainPage());
+            // this.MainPage = new NavigationPage(new MainPage());
+            this.MainPage = new DrawerPage();
         }
 
         protected override void OnStart()

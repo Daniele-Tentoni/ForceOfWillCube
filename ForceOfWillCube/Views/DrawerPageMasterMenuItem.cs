@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ForceOfWillCube.Views
+﻿namespace ForceOfWillCube.Views
 {
+    using System;
 
     public class DrawerPageMasterMenuItem
     {
         public DrawerPageMasterMenuItem()
         {
-            TargetType = typeof(DrawerPageMasterMenuItem);
+            this.TargetType = typeof(DrawerPageMasterMenuItem);
         }
+
         public int Id { get; set; }
+
         public string Title { get; set; }
 
         public Type TargetType { get; set; }
+
+        public bool IsVisible { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace ForceOfWillCube
+﻿namespace ForceOfWillCube.Views
 {
     using ForceOfWillCube.ViewModels.MainPage;
     using System.ComponentModel;

@@ -1,36 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace ForceOfWillCube.Views
+﻿namespace ForceOfWillCube.Views
 {
+    using System;
+
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DrawerPage : MasterDetailPage
     {
         public DrawerPage()
         {
-            InitializeComponent();
-            MasterPage.ListView.ItemSelected += ListView_ItemSelected;
+            this.InitializeComponent();
+            this.MasterPage.ListView.ItemSelected += this.ListView_ItemSelected;
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var item = e.SelectedItem as DrawerPageMasterMenuItem;
-            if (item == null)
+            if (!(e.SelectedItem is DrawerPageMasterMenuItem item))
                 return;
 
             var page = (Page)Activator.CreateInstance(item.TargetType);
             page.Title = item.Title;
 
-            Detail = new NavigationPage(page);
-            IsPresented = false;
+            this.Detail = new NavigationPage(page);
+            this.IsPresented = false;
 
-            MasterPage.ListView.SelectedItem = null;
+            this.MasterPage.ListView.SelectedItem = null;
         }
     }
 }

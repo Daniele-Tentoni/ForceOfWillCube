@@ -6,12 +6,11 @@
              xmlns:local="clr-namespace:ForceOfWillCube.ViewModels.MainPage" 
              mc:Ignorable="d"
              Title="{Binding Title, Mode=OneWay}"
-             x:Class="ForceOfWillCube.MainPage"
+             x:Class="ForceOfWillCube.Views.MainPage"
              Visual="Material">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Signin" Command="{Binding SwithUserCommand}" Order="Primary" />
-        <ToolbarItem Text="Add" Command="{Binding AddCollectionToolbarCommand}" Order="Secondary" />
+        <ToolbarItem Text="{Binding AddCollectionText}" Command="{Binding AddCollectionToolbarCommand}" Order="Secondary" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -34,7 +33,7 @@
                                   FontAttributes="Bold" ForegroundColor="White" />
                                 <Span Text="&#10;" FontSize="17" 
                                   ForegroundColor="White" />
-                                <Span Text="ID 12345678" FontSize="17" 
+                                <Span Text="ID 1234567890" FontSize="17" 
                                   ForegroundColor="White" />
                             </FormattedString>
                         </Label.FormattedText>
@@ -43,7 +42,7 @@
 
                 <!-- 2. Contact information frame-->
                 <Frame
-                    CornerRadius="20" Margin="0,-50,0,0"
+                    CornerRadius="20" Margin="5, -50, 5, 0"
                     BackgroundColor="#fbfaff" HasShadow="False"
                     HeightRequest="300"/>
 
@@ -92,15 +91,15 @@
                                     <SwipeView.LeftItems>
                                         <SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
                                             <SwipeItem
-                                                IsDestructive="True" 
-                                                Text="Delete" IconImageSource="delete.png"
+                                                IsDestructive="True" BackgroundColor="{StaticResource PrimaryColor}"
+                                                IconImageSource="delete.png"
                                                 Command="{Binding DeleteCollectionSwipeInvoke}"
                                                 BindingContext="{Binding Source={x:Reference MyFowCollectionView}, Path=BindingContext}"
                                                 CommandParameter="{Binding Source={x:Reference FowCollectionItem}, Path=BindingContext}" />
                                         </SwipeItems>
                                     </SwipeView.LeftItems>
 
-                                    <Grid Margin="20,0,20,0">
+                                    <Grid Margin="10,5,10,5">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
