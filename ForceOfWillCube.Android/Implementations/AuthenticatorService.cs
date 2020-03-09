@@ -1,7 +1,7 @@
 ﻿using ForceOfWillCube.Droid.Implementations;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(AuthenticatorManager))]
+[assembly: Dependency(typeof(AuthenticatorService))]
 namespace ForceOfWillCube.Droid.Implementations
 {
     using Android.App;
@@ -11,13 +11,13 @@ namespace ForceOfWillCube.Droid.Implementations
     using ForceOfWillCube.Utils;
     using System;
 
-    public class AuthenticatorManager : IAuthenticatorManager
+    public class AuthenticatorService : IAuthenticatorService
     {
         private readonly ISharedPreferences sharedPreferences;
 
         private UserModel currentUser;
 
-        public AuthenticatorManager()
+        public AuthenticatorService()
         {
             this.sharedPreferences = Application.Context.GetSharedPreferences("UserInfo", FileCreationMode.Private);
             this.currentUser = new UserModel
@@ -25,6 +25,7 @@ namespace ForceOfWillCube.Droid.Implementations
                 Email = this.sharedPreferences.GetString("user_email", string.Empty),
                 IsLogged = this.sharedPreferences.GetBoolean("is_logged", false),
                 PhotoUrl = this.sharedPreferences.GetString("user_photo_url", string.Empty),
+                UserId = this.sharedPreferences.GetInt("user_user_id", 0),
                 Username = this.sharedPreferences.GetString("user_username", "Guest User")
             };
         }
@@ -35,24 +36,25 @@ namespace ForceOfWillCube.Droid.Implementations
             this.currentUser.IsLogged = true;
             this.currentUser.PhotoUrl = string.Empty;
             this.currentUser.Username = username;
-            return this.EditPreferences(this.currentUser);
+            return this.EditPreferences(this.sharedPreferences.Edit(), this.currentUser);
         }
 
         public bool SignoutUser()
         {
             this.currentUser = new UserModel { IsLogged = false, Username = "Guest User" };
-            return this.EditPreferences(this.currentUser);
+            return this.EditPreferences(this.sharedPreferences.Edit(), this.currentUser);
         }
 
-        private bool EditPreferences(UserModel model)
+        private bool EditPreferences(ISharedPreferencesEditor editor, UserModel model)
         {
             try
             {
-                this.sharedPreferences.Edit().PutString("user_email", string.Empty);
-                this.sharedPreferences.Edit().PutBoolean("is_logged", false);
-                this.sharedPreferences.Edit().PutString("user_photo_url", string.Empty);
-                this.sharedPreferences.Edit().PutString("user_username", string.Empty);
-                this.sharedPreferences.Edit().Apply();
+                editor.PutString("user_email", string.Empty);
+                editor.PutBoolean("is_logged", false);
+                editor.PutString("user_photo_url", string.Empty);
+                editor.PutInt("user_user_id", model.UserId);
+                editor.PutString("user_username", string.Empty);
+                editor.Apply();
                 return true;
             }
             catch (Exception e)

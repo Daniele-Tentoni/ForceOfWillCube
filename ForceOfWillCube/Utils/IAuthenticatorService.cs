@@ -2,7 +2,7 @@
 {
     using ForceOfWillCube.Models.Users;
 
-    public interface IAuthenticatorManager
+    public interface IAuthenticatorService
     {
         UserModel GetSignedUser();
         bool SigninUser(string username);

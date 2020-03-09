@@ -79,11 +79,47 @@ namespace ForceOfWillCube.Utils {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a You have correctly deleted the collection..
+        /// </summary>
+        internal static string CorrectlyDeleteCollection {
+            get {
+                return ResourceManager.GetString("CorrectlyDeleteCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Delete Collection.
+        /// </summary>
+        internal static string DeleteCollection {
+            get {
+                return ResourceManager.GetString("DeleteCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a Great!.
         /// </summary>
         internal static string Great {
             get {
                 return ResourceManager.GetString("Great", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Input the name of the new collection.
+        /// </summary>
+        internal static string InputCollectionName {
+            get {
+                return ResourceManager.GetString("InputCollectionName", resourceCulture);
             }
         }
         
@@ -97,11 +133,65 @@ namespace ForceOfWillCube.Utils {
         }
         
         /// <summary>
+        ///   Cerca una stringa localizzata simile a Name.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una stringa localizzata simile a New Collection.
         /// </summary>
         internal static string NewCollection {
             get {
                 return ResourceManager.GetString("NewCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a Ok.
+        /// </summary>
+        internal static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a USER_NOT_SIGN_IN.
+        /// </summary>
+        internal static string USER_NOT_SIGN_IN {
+            get {
+                return ResourceManager.GetString("USER_NOT_SIGN_IN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a USER_NOT_SIGN_OUT.
+        /// </summary>
+        internal static string USER_NOT_SIGN_OUT {
+            get {
+                return ResourceManager.GetString("USER_NOT_SIGN_OUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a USER_SIGN_IN.
+        /// </summary>
+        internal static string USER_SIGN_IN {
+            get {
+                return ResourceManager.GetString("USER_SIGN_IN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a USER_SIGN_OUT.
+        /// </summary>
+        internal static string USER_SIGN_OUT {
+            get {
+                return ResourceManager.GetString("USER_SIGN_OUT", resourceCulture);
             }
         }
         

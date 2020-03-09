@@ -123,14 +123,44 @@
   <data name="BadDone" xml:space="preserve">
     <value>Bad done, bad job.</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CorrectlyDeleteCollection" xml:space="preserve">
+    <value>You have correctly deleted the collection.</value>
+  </data>
+  <data name="DeleteCollection" xml:space="preserve">
+    <value>Delete Collection</value>
+  </data>
   <data name="Great" xml:space="preserve">
     <value>Great!</value>
+  </data>
+  <data name="InputCollectionName" xml:space="preserve">
+    <value>Input the name of the new collection</value>
   </data>
   <data name="MainPageTitle" xml:space="preserve">
     <value>Main Page</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="NewCollection" xml:space="preserve">
     <value>New Collection</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="USER_NOT_SIGN_IN" xml:space="preserve">
+    <value>USER_NOT_SIGN_IN</value>
+  </data>
+  <data name="USER_NOT_SIGN_OUT" xml:space="preserve">
+    <value>USER_NOT_SIGN_OUT</value>
+  </data>
+  <data name="USER_SIGN_IN" xml:space="preserve">
+    <value>USER_SIGN_IN</value>
+  </data>
+  <data name="USER_SIGN_OUT" xml:space="preserve">
+    <value>USER_SIGN_OUT</value>
   </data>
   <data name="WellDone" xml:space="preserve">
     <value>Well done, good job.</value>

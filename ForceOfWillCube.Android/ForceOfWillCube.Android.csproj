@@ -60,7 +60,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementations\AuthenticatorManager.cs" />
+    <Compile Include="Implementations\AuthenticatorService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

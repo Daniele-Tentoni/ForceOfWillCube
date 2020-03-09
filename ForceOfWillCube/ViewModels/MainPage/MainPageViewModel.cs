@@ -19,14 +19,9 @@
             set => this.SetProperty(ref this._collections, value);
         }
 
-        private string _username;
-        public string Username
-        {
-            get => this._username;
-            set => this.SetProperty(ref this._username, value);
-        }
+        public string Username => App.AuthenticatorManager.SignedUser.Username;
+        public int UserId => App.AuthenticatorManager.SignedUser.UserId;
 
-        public Command SwithUserCommand { get; set; }
         public Command AddCollectionToolbarCommand { get; set; }
         public Command DeleteCollectionSwipeInvoke { get; set; }
 
@@ -36,8 +31,6 @@
             var collections = App.Local.GetAllCollections().Result;
             this.Collections = new ObservableCollection<FowCollection>(collections);
             this.PropertyChanged += this.CatchPropertyChanged;
-            this.Username = DependencyService.Get<IAuthenticatorManager>().GetSignedUser().Username;
-            this.SwithUserCommand = new Command(() => this.SwitchUser());
             this.AddCollectionToolbarCommand = new Command(() => this.CreateCollectionModal());
             this.DeleteCollectionSwipeInvoke = new Command(itemId => this.ExcecuteDeleteCollectionCommandAsync((FowCollection)itemId));
 
@@ -51,22 +44,6 @@
         }
 
         private void CatchPropertyChanged(object sender, PropertyChangedEventArgs e) => Log.Warning("a", "b");
-
-        private void SwitchUser()
-        {
-            var authManager = DependencyService.Get<IAuthenticatorManager>();
-            var signedUser = authManager.GetSignedUser();
-            if (signedUser != null && signedUser.IsLogged)
-            {
-                authManager.SignoutUser();
-                this.Username = "Guest User";
-            }
-            else
-            {
-                authManager.SigninUser("Tento");
-                this.Username = authManager.GetSignedUser().Username;
-            }
-        }
 
         private async void CreateCollectionModal()
         {
