@@ -44,7 +44,7 @@
                     new DrawerPageMasterMenuItem { Id = 2, Title = "Sign up", TargetType = typeof(DrawerPageDetail), IsVisible = true },
                     new DrawerPageMasterMenuItem { Id = 3, Title = "Account", TargetType = typeof(DrawerPageDetail), IsVisible = false },
                     new DrawerPageMasterMenuItem { Id = 4, Title = "Sign out", TargetType = typeof(DrawerPageDetail), IsVisible = false },
-                    new DrawerPageMasterMenuItem { Id = 5, Title = "About", TargetType = typeof(DrawerPageDetail), IsVisible = true }
+                    new DrawerPageMasterMenuItem { Id = 5, Title = "About", TargetType = typeof(AboutViews.AboutPage), IsVisible = true }
                 });
 
                 this.SubsribeForMessages();
