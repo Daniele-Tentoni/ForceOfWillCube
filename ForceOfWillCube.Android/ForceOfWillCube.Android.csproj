@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -91,7 +90,7 @@
   <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ForceOfWillCube\ForceOfWillCube.csproj">
-      <Project>{1F1B44F3-6F44-4491-A6A7-CBE20E4EC789}</Project>
+      <Project>{E3F5AB66-65CF-451B-82ED-98E5C8716B4E}</Project>
       <Name>ForceOfWillCube</Name>
     </ProjectReference>
   </ItemGroup>

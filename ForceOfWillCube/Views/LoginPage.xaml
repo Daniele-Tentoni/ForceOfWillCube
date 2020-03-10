@@ -8,6 +8,7 @@
              x:Class="ForceOfWillCube.Views.LoginPage"
              Visual="Material">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -15,31 +16,89 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Label Grid.Row="0" Grid.Column="0"
-                       Visual="Material"
-                       TextColor="{StaticResource PrimaryTextColor}"
+                       Padding="10,20,10,10"
+                       Visual="Material" Style="{StaticResource FalseLabel}"
                        VerticalOptions="CenterAndExpand" 
                        HorizontalOptions="CenterAndExpand" >
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="{Binding WelcomeString, StringFormat='{0} &#10;'}" />
-                                <Span Text="{Binding LoginUserString, StringFormat='{0}'}" />
+                                <Span TextColor="White" Text="{Binding WelcomeString, StringFormat='{0} &#10;'}" />
+                                <Span TextColor="White" Text="{Binding LoginUserString, StringFormat='{0}'}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
 
                 <Frame Grid.Column="0" Grid.Row="1"
-                       CornerRadius="20" Margin="5, 10, 5, 0"
-                       BackgroundColor="{StaticResource PrimaryLightColor}" HasShadow="False"
+                       Style="{StaticResource CardStyle}"
                        HeightRequest="300"/>
+
+                <Grid Grid.Row="2" Grid.Column="0"
+                      Visual="Material" Margin="30, -320, 30, 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    
+                    <Entry ReturnType="Next" Keyboard="Email"
+                           Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0"
+                           Visual="Material" Placeholder="Email"
+                           VerticalOptions="Start" Style="{StaticResource BaseLabel}"/>
+                    
+                    <Entry ReturnType="Send" Keyboard="Plain" IsPassword="True"
+                           Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1"
+                           Visual="Material" Placeholder="Password"
+                           VerticalOptions="Start" Style="{StaticResource BaseLabel}"/>
+
+                    <Button Text="Login With Email"
+                            Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2"
+                            Visual="Material" />
+
+                    <Label Text="Altrimenti accedi con"
+                           Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3"
+                           Visual="Material" Style="{StaticResource BaseLabel}"
+                           VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                    <Button Text="Facebook"
+                            Grid.Column="0" Grid.Row="4"
+                            Visual="Material" />
+                    <Button Text="Google"
+                            Grid.Column="1" Grid.Row="4"
+                            Visual="Material" />
+                    <Button Text="Twitter"
+                            Grid.Column="2" Grid.Row="4"
+                            Visual="Material" />
+                    
+
+                    <Label Text="Hai dimenticato la password?"
+                           Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5"
+                           Visual="Material" Style="{StaticResource BaseLabel}"
+                           VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                    <Label Text="Non possiedi ancora un account?"
+                           Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6"
+                           Visual="Material" Style="{StaticResource BaseLabel}"
+                           VerticalOptions="Center" HorizontalOptions="Center"/>
+                </Grid>
             </Grid>
         </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

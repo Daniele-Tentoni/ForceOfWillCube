@@ -67,6 +67,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Implementations\AuthenticatorService.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -131,11 +132,14 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\ForceOfWillCube\ForceOfWillCube.csproj">
-      <Project>{1F1B44F3-6F44-4491-A6A7-CBE20E4EC789}</Project>
+      <Project>{E3F5AB66-65CF-451B-82ED-98E5C8716B4E}</Project>
       <Name>ForceOfWillCube</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Implementations\" />
   </ItemGroup>
 </Project>

@@ -35,6 +35,7 @@ namespace ForceOfWillCube.Droid.Implementations
             this.currentUser.Email = username;
             this.currentUser.IsLogged = true;
             this.currentUser.PhotoUrl = string.Empty;
+            this.currentUser.UserId = 1;
             this.currentUser.Username = username;
             return this.EditPreferences(this.sharedPreferences.Edit(), this.currentUser);
         }

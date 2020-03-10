@@ -6,8 +6,8 @@
 
     public class SignInViewModel: BaseViewModel
     {
-        public string WelcomeString = "Welcome to Force of Will Cube";
-        public string LoginUseString = "Use this page to signin to our servers.";
+        public string WelcomeString => "Welcome to Force of Will Cube";
+        public string LoginUserString => "Use this page to signin to our servers.";
 
         public SignInViewModel()
         {
