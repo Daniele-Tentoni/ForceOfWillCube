@@ -30,12 +30,6 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
-ForceOfWillCube.NUnit/[Oo]bj/
-ForceOfWillCube.iOS/[Oo]bj/
-ForceOfWillCube.Android/[Bb]in/
-ForceOfWillCube.Android/[Oo]bj/
-ForceOfWillCube/[Bb]in/
-ForceOfWillCube/[Oo]bj/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
