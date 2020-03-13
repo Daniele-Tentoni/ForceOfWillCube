@@ -6,12 +6,16 @@ namespace ForceOfWillCube.Views.AboutViews
     {
         public AboutPage()
         {
-            Content = new StackLayout
+            Content = new ScrollView
             {
-                Children = {
-                    new WhiteLabel { Text = "Hi, this is an about page." },
-                    new WhiteLabel { Text = "You can use this app to manage your Force of Will Cube collections." },
-                    new WhiteLabel { Text = "Don't forget to support the developer with an high rating on the store!" }
+                Content = new StackLayout
+                {
+                    Padding = new Thickness(10, 5, 10, 5),
+                    Children = {
+                        new WhiteLabel { Text = "Hi, this is an about page." },
+                        new WhiteLabel { Text = "You can use this app to manage your Force of Will Cube collections." },
+                        new WhiteLabel { Text = "Don't forget to support the developer with an high rating on the store!" }
+                    }
                 }
             };
         }
@@ -21,6 +25,7 @@ namespace ForceOfWillCube.Views.AboutViews
             public WhiteLabel()
             {
                 this.TextColor = Color.White;
+                this.FontSize = 24;
             }
         }
     }
