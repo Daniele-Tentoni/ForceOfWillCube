@@ -9,7 +9,7 @@
         #region Create
         
         public async Task<int> InsertCardAsync(FowCard card) =>
-            await this._database.InsertAsync(card, typeof(FowCard));
+            await this._database.InsertAsync(card);
 
         #endregion
         

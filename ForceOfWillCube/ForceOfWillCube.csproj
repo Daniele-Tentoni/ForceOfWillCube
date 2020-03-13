@@ -12,9 +12,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
+    <PackageReference Include="SQLiteNetExtensions.Async" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,5 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\AboutViews\" />
+    <Folder Include="Models\Sets\" />
   </ItemGroup>
 </Project>

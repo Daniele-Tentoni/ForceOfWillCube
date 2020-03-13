@@ -1,7 +1,11 @@
-﻿namespace ForceOfWillCube.Models.Cards
-{
-    using SQLite;
+﻿using System.Collections.Generic;
+using ForceOfWillCube.Models.Collections;
+using ForceOfWillCube.Models.Sets;
+using SQLite;
+using SQLiteNetExtensions.Attributes;
 
+namespace ForceOfWillCube.Models.Cards
+{
     [Table("cards")]
     public class FowCard
     {
@@ -12,5 +16,13 @@
         public string EffectText { get; set; }
         public int Attack { get; set; }
         public int Defense { get; set; }
+        [ForeignKey(typeof(FowSet))]     // Specify the foreign key
+        public int SetId { get; set; }
+
+        [ManyToOne]
+        public FowSet Set { get; set; }
+
+        [ManyToMany(typeof(CollectionCard))]
+        public List<FowCollection> Students { get; set; }
     }
 }

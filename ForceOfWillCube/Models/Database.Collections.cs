@@ -13,7 +13,7 @@
 
         public async Task<FowCollection> InsertCollectionAsync(FowCollection collection)
         {
-            await this._database.InsertAsync(collection, typeof(FowCollection));
+            await this._database.InsertAsync(collection);
             return this._database.Table<FowCollection>().ToListAsync().Result.Last();
         }
 
@@ -35,22 +35,22 @@
         {
             var collection = await this.GetCollectionByIdAsync(collectionId);
             // collection.Cards.Add(await this.GetCardByIdAsync(cardId));
-            return await this._database.UpdateAsync(collection, typeof(FowCollection));
+            return await this._database.UpdateAsync(collection);
         }
 
         public async Task<int> RemoveCardFromCollectionByIdAsync(int collectionId, int cardId)
         {
             var collection = await this.GetCollectionByIdAsync(collectionId);
             // collection.Cards.Remove(await this.GetCardByIdAsync(cardId));
-            return await this._database.UpdateAsync(collection, typeof(FowCollection));
+            return await this._database.UpdateAsync(collection);
         }
 
         #endregion
 
         #region Delete
 
-        public async Task<int> DeleteCollectionById(int collectionId) =>
-            await this._database.DeleteAsync<FowCollection>(collectionId);
+        public async Task<int> DeleteCollectionById(FowCollection collection) =>
+            await this._database.DeleteAsync(collection);
 
         #endregion
     }

@@ -81,7 +81,7 @@
                 return;
             this.IsBusy = true;
 
-            var res = await App.Local.DeleteCollectionById(collection.Id);
+            var res = await App.Local.DeleteCollectionById(collection);
             await Device.InvokeOnMainThreadAsync(async () =>
             {
                 await Application.Current.MainPage.DisplayAlert(
