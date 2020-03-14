@@ -16,6 +16,7 @@ namespace ForceOfWillCube.Models.Cards
         public string EffectText { get; set; }
         public int Attack { get; set; }
         public int Defense { get; set; }
+
         [ForeignKey(typeof(FowSet))]     // Specify the foreign key
         public int SetId { get; set; }
 
@@ -23,6 +24,6 @@ namespace ForceOfWillCube.Models.Cards
         public FowSet Set { get; set; }
 
         [ManyToMany(typeof(CollectionCard))]
-        public List<FowCollection> Students { get; set; }
+        public List<FowCollection> Collections { get; set; }
     }
 }

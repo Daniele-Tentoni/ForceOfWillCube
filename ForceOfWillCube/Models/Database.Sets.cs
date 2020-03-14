@@ -8,8 +8,8 @@ namespace ForceOfWillCube.Models
     {
         #region Create
 
-        public async Task<int> InsertSetAsync(FowSet set) =>
-            await this._database.InsertAsync(set);
+        public Task<int> InsertSetAsync(FowSet set) =>
+            this._database.InsertAsync(set);
 
         #endregion
 

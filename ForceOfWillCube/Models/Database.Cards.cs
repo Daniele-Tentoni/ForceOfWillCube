@@ -8,8 +8,8 @@
     {
         #region Create
         
-        public async Task<int> InsertCardAsync(FowCard card) =>
-            await this._database.InsertAsync(card);
+        public Task<int> InsertCardAsync(FowCard card) =>
+            this._database.InsertAsync(card);
 
         #endregion
         

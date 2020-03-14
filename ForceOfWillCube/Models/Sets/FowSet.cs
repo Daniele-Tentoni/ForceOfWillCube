@@ -12,6 +12,7 @@ namespace ForceOfWillCube.Models.Sets
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
+        [MaxLength(63)]
         public string Name { get; set; }
 
         public DateTime ReleaseDate { get; set; }
@@ -22,8 +23,15 @@ namespace ForceOfWillCube.Models.Sets
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<FowCard> Cards { get; set; }
 
-        public FowSet()
+        [Ignore]
+        public long CardsInCount
         {
+            get
+            {
+                if (Cards != null && Cards.Count > 0)
+                    return Cards.Count;
+                return 0;
+            }
         }
     }
 }

@@ -1,9 +1,10 @@
-﻿using System;
-using ForceOfWillCube.Models.Cards;
+﻿using ForceOfWillCube.Models.Cards;
+using SQLite;
 using SQLiteNetExtensions.Attributes;
 
 namespace ForceOfWillCube.Models.Collections
 {
+    [Table("collectioncards")]
     public class CollectionCard
     {
         [ForeignKey(typeof(FowCollection))]
