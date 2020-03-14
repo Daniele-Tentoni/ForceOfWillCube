@@ -35,7 +35,7 @@
                     HeightRequest="300"/>
 
                 <!-- It will contain blocks: 3, 4 and 5 -->
-                <Grid Margin="30, -320, 30, 10">
+                <Grid Margin="30, -300, 30, 10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>

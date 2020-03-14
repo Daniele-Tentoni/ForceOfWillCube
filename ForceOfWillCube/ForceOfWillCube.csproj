@@ -15,6 +15,7 @@
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
     <PackageReference Include="SQLiteNetExtensions.Async" Version="2.1.0" />
+    <PackageReference Include="FirebaseDatabase.net" Version="4.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,5 +47,8 @@
   <ItemGroup>
     <Folder Include="Views\AboutViews\" />
     <Folder Include="Models\Sets\" />
+    <Folder Include="Remotes\" />
+    <Folder Include="Views\CardLists\" />
+    <Folder Include="ViewModels\CardLists\" />
   </ItemGroup>
 </Project>

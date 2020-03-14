@@ -1,5 +1,56 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ForceOfWillCube.Views.CardLists.FowSetsView">
-    <ContentView.Content>
-    </ContentView.Content>
-</ContentView>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ForceOfWillCube.Views.CardLists.FowSetsView"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <Style TargetType="Label" BasedOn="{StaticResource BaseLabel}" />
+        <Style TargetType="Frame" BasedOn="{StaticResource CardStyle}" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <CollectionView x:Name="MyFowSetsView"
+                        ItemsSource="{Binding Sets}"
+                        VerticalOptions="Start"
+                        ItemsLayout="VerticalList"
+                        IsTabStop="True">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Margin="5, 0, 5, 0">
+                        <Frame>
+                            <Grid Margin="10,0,10,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Visual="Material"
+                                       Grid.Row="0" Grid.Column="0"
+                                       Text="{Binding Id, StringFormat='Id: {0}'}"
+                                       FontAttributes="Bold" FontSize="18"/>
+
+                                <Label Visual="Material"
+                                       Grid.Row="0" Grid.Column="1"
+                                       Text="{Binding Name, StringFormat='{0}'}"
+                                       FontAttributes="Bold" FontSize="20" />
+
+                                <Label Visual="Material"
+                                       Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                       Text="{Binding ReleaseDate, StringFormat='Release: {0}'}" />
+
+                                <Label Visual="Material"
+                                       Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                       Text="{Binding CardsInCount, StringFormat='Cards In: {0}'}" />
+
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>
