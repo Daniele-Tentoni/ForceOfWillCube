@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ForceOfWillCube.Views.LifeCount.PlayerView"
+             Visual="Material">
+    <ContentView.Content>
+        <StackLayout Margin="5, 10, 5, 0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Player Name -->
+            <Label Text="{Binding Name}" Visual="Material"
+                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                   Style="{StaticResource BaseLabel}" FontSize="Large"
+                   Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0" />
+
+            <!-- Player LifePoints-->
+            <Button Text="+100" Visual="Material"
+                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                    Command="{Binding IncrementLifePointsBy100}"/>
+
+            <Button Text="+500" Visual="Material"
+                    Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                    Command="{Binding IncrementLifePointsBy500}"/>
+
+            <Label Text="{Binding Lifepoints}" Visual="Material"
+                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                   Style="{StaticResource BaseLabel}" FontSize="Large"
+                   Grid.Column="2" Grid.ColumnSpan="1" Grid.Row="1" Grid.RowSpan="2" />
+
+            <Button Text="-100" Visual="Material"
+                    Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"
+                    Command="{Binding DecrementLifePointsBy100}" />
+
+            <Button Text="-500" Visual="Material"
+                    Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
+                    Command="{Binding DecrementLifePointsBy500}" />
+
+            <!-- Player Counters -->
+            <Button Text="+" Visual="Material"
+                    Grid.Row="3" Grid.Column="0"
+                    Command="{Binding IncrementCounters}"/>
+
+            <Label Text="{Binding Counters}" Visual="Material"
+                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                   Style="{StaticResource BaseLabel}" FontSize="Large"
+                   Grid.Column="1" Grid.Row="3" />
+            
+            <Button Text="-" Visual="Material"
+                    Grid.Row="3" Grid.Column="2"
+                    Command="{Binding DecrementCounters}"/>
+
+            <!-- Player Randomizer -->
+            <Button Text="Random" Visual="Material"
+                    Grid.Row="3" Grid.Column="4"
+                    Command="{Binding Randomize}"/>
+
+            <Label Text="{Binding Randomized}" Visual="Material"
+                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                   Style="{StaticResource BaseLabel}" FontSize="Large"
+                   Grid.Column="3" Grid.Row="3" />
+        </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

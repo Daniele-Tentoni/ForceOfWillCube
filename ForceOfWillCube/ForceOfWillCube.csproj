@@ -50,5 +50,8 @@
     <Folder Include="Remotes\" />
     <Folder Include="Views\CardLists\" />
     <Folder Include="ViewModels\CardLists\" />
+    <Folder Include="Views\LifeCount\" />
+    <Folder Include="ViewModels\LifeCount\" />
+    <Folder Include="Models\Logs\" />
   </ItemGroup>
 </Project>

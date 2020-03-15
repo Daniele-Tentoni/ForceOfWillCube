@@ -8,15 +8,21 @@
     using SQLiteNetExtensionsAsync.Extensions;
     using System.IO;
     using ForceOfWillCube.Remotes;
+    using System;
+    using ForceOfWillCube.Models.Logs;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public partial class Database
     {
         private const string LOG_TAG = "DATABASE";
+        private readonly string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "collection.db3");
         private readonly SQLiteAsyncConnection _database;
 
-        public Database(string dbPath)
+        public Database()
         {
 #if DEBUG
+            // Reset the database only in debug compilation mode.
             if (File.Exists(dbPath))
                 File.Delete(dbPath);
 #endif
@@ -25,6 +31,7 @@
             this._database.CreateTableAsync<FowCollection>().Wait();
             this._database.CreateTableAsync<CollectionCard>().Wait();
             this._database.CreateTableAsync<FowSet>().Wait();
+            this._database.CreateTableAsync<LifecountLog>().Wait();
 #if DEBUG
             if (this._database.Table<FowCard>().CountAsync().Result <= 0)
             {
@@ -42,5 +49,22 @@
             Log.Warning(LOG_TAG, "No database generation.");
 #endif
         }
+
+        public int InsertLifecountLog(string text) =>
+            this._database.InsertAsync(
+                new LifecountLog(text))
+            .Result;
+
+        public IEnumerable<string> GetAllLifecountLogs() =>
+            this._database.GetAllWithChildrenAsync<LifecountLog>().Result
+            .OrderByDescending(o => o.Registration)
+            .Select(s => s.Text);
+
+        public void ClearLifecountLogs() =>
+            this.GetAllLifecountLogs().ForEach(elem =>
+            {
+                this._database.DeleteAsync(elem);
+            });
+
     }
 }

@@ -3,6 +3,7 @@
     using ForceOfWillCube.Utils;
     using ForceOfWillCube.ViewModels;
     using ForceOfWillCube.Views.CardLists;
+    using ForceOfWillCube.Views.LifeCount;
     using System.Collections.ObjectModel;
     using System.Linq;
     using Xamarin.Forms;
@@ -42,6 +43,7 @@
                 {
                     new DrawerPageMasterMenuItem { Id = 0, Title = "Collections", TargetType = typeof(MainPage), IsVisible = true },
                     new DrawerPageMasterMenuItem { Id = 6, Title = "Card DB", TargetType = typeof(FowSetsView), IsVisible = true },
+                    new DrawerPageMasterMenuItem { Id = 7, Title = "Lifecount", TargetType = typeof(LifeCountPage), IsVisible = true },
                     new DrawerPageMasterMenuItem { Id = 1, Title = "Sign in", TargetType = typeof(LoginPage), IsVisible = true },
                     new DrawerPageMasterMenuItem { Id = 2, Title = "Sign up", TargetType = typeof(DrawerPageDetail), IsVisible = true },
                     new DrawerPageMasterMenuItem { Id = 3, Title = "Account", TargetType = typeof(DrawerPageDetail), IsVisible = false },

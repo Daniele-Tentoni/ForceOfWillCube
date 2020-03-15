@@ -78,7 +78,8 @@
 
                     <Button Text="Facebook"
                             Grid.Column="0" Grid.Row="4"
-                            Visual="Material" />
+                            Visual="Material"
+                            Command="{Binding LoginWithFacebook}"/>
                     <Button Text="Google"
                             Grid.Column="1" Grid.Row="4"
                             Visual="Material" />

@@ -1,35 +1,25 @@
 ﻿namespace ForceOfWillCube
 {
     using ForceOfWillCube.Models;
+    using ForceOfWillCube.Remotes;
     using ForceOfWillCube.Utils;
     using ForceOfWillCube.Views;
     using System;
-    using System.IO;
     using Xamarin.Forms;
 
     public partial class App : Application
     {
-        private static Database database;
-        public static Database Local
-        {
-            get
-            {
-                if(database == null)
-                    database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "collection.db3"));
-                return database;
-            }
-        }
+        private static readonly Lazy<Database> _database =
+            new Lazy<Database>();
+        public static Database Local => _database.Value;
 
-        private static AuthenticatorManager _authManager;
-        public static AuthenticatorManager AuthenticatorManager
-        {
-            get
-            {
-                if (_authManager == null)
-                    _authManager = new AuthenticatorManager();
-                return _authManager;
-            }
-        }
+        private static readonly Lazy<AuthenticatorManager> _authManager =
+            new Lazy<AuthenticatorManager>();
+        public static AuthenticatorManager AuthenticatorManager => _authManager.Value;
+
+        private static readonly Lazy<RealtimeDatabaseClient> _remote =
+            new Lazy<RealtimeDatabaseClient>();
+        public static RealtimeDatabaseClient Remote => _remote.Value;
 
         public App()
         {
@@ -46,6 +36,7 @@
 
         protected override void OnSleep()
         {
+            Local.ClearLifecountLogs();
         }
 
         protected override void OnResume()

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Firebase.Database;
@@ -28,11 +27,13 @@ namespace ForceOfWillCube.Remotes
             }).ToList();
         }
 
-        public async Task<string> CreateSetAsync(FowSet set)
+        /*
+         * public async Task<string> CreateSetAsync(FowSet set)
         {
              var json = JsonConvert.SerializeObject(set);
             var res = await firebase.Child("Sets").PostAsync(json);
             return res.Object;
         }
+        */
     }
 }
