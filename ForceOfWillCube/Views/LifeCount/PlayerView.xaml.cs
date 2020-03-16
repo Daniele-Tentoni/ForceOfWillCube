@@ -14,5 +14,10 @@ namespace ForceOfWillCube.Views.LifeCount
         }
 
         public PlayerView() : this("Guest Player") { }
+
+        public void Reset()
+        {
+            this.viewModel.Reset();
+        }
     }
 }

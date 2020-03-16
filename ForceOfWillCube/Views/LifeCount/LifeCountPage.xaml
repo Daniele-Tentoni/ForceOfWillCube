@@ -4,8 +4,8 @@
              x:Class="ForceOfWillCube.Views.LifeCount.LifeCountPage"
              Title="{Binding Title}" Visual="Material">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding ShowLog}" Order="Secondary"
-                     Text="Log" IsEnabled="True" />
+        <ToolbarItem Command="{Binding ShowLogCommand}" Order="Secondary" Text="Log" />
+        <ToolbarItem Command="{Binding ResetPlayersCommand}" Order="Secondary" Text="Reset" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid x:Name="PlayerGrid">

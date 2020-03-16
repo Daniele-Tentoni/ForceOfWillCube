@@ -6,10 +6,12 @@ namespace ForceOfWillCube.Views.LifeCount
 {
     public partial class LifeCountPage : ContentPage
     {
+        private readonly LifeCountViewModel viewModel;
+
         public LifeCountPage()
         {
             InitializeComponent();
-            this.BindingContext = new LifeCountViewModel();
+            this.BindingContext = this.viewModel = new LifeCountViewModel();
         }
 
         protected override void OnAppearing()
@@ -43,10 +45,14 @@ namespace ForceOfWillCube.Views.LifeCount
             */
 
             // Await the prompts to be showed and completed.
-            var player1 = new PlayerView("Guest player 1");
-            player1.RotateTo(180);
-            this.PlayerGrid.Children.Add(player1, 0, 0);
-            this.PlayerGrid.Children.Add(new PlayerView("Guest player 2"), 0, 1);
+            if (!this.viewModel.HasPlayers())
+            {
+                var player1 = this.viewModel.AddPlayer("Guest player 1");
+                player1.RotateTo(180);
+                this.PlayerGrid.Children.Add(player1, 0, 0);
+                var player2 = this.viewModel.AddPlayer("Guest player 2");
+                this.PlayerGrid.Children.Add(player2, 0, 1);
+            }
         }
 
         protected override bool OnBackButtonPressed()

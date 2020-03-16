@@ -51,76 +51,59 @@ namespace ForceOfWillCube.ViewModels.LifeCount
         {
             this.Title = name;
             this.Name = name;
-            this.Lifepoints = 4000; // Restore previous values if exists.
-            this.Counters = 0;
-            this.Randomized = 0;
+            this.Reset();
             this.IncrementLifePointsBy100 = new Command(
-                () => this.ExecuteIncrementLifePoints(100),
+                () => this.ExecuteModifyLifePoints(100),
                 () => !this.IsBusy);
             this.DecrementLifePointsBy100 = new Command(
-                () => this.ExecuteDecrementLifePoints(100),
+                () => this.ExecuteModifyLifePoints(-100),
                 () => !this.IsBusy);
             this.IncrementLifePointsBy500 = new Command(
-                () => this.ExecuteIncrementLifePoints(500),
+                () => this.ExecuteModifyLifePoints(500),
                 () => !this.IsBusy);
             this.DecrementLifePointsBy500 = new Command(
-                () => this.ExecuteDecrementLifePoints(500),
+                () => this.ExecuteModifyLifePoints(-500),
                 () => !this.IsBusy);
             this.IncrementCounters = new Command(
-                () => this.ExecuteIncrementCounters(),
+                () => this.ExecuteModifyCounters(1),
                 () => !this.IsBusy);
             this.DecrementCounters = new Command(
-                () => this.ExecuteDecrementCounters(),
+                () => this.ExecuteModifyCounters(-1),
                 () => !this.IsBusy);
             this.Randomize = new Command(
                 () => this.ExecuteRandomize(),
                 () => !this.IsBusy);
         }
 
-        private void ExecuteIncrementLifePoints(int increment = 100)
+        public void Reset()
+        {
+            this.Lifepoints = 4000;
+            this.Counters = 0;
+            this.Randomized = 0;
+        }
+
+        private void ExecuteModifyLifePoints(int modification = 1)
         {
             if (this.IsBusy)
                 return;
             this.IsBusy = true;
 
-            this.Lifepoints += increment;
-            this.ComposeLog("Lifepoints", "incremented", increment);
+            var old = this.Lifepoints;
+            this.Lifepoints += modification;
+            this.ComposeLog("Lifepoints", old, this.Lifepoints);
 
             this.IsBusy = false;
         }
 
-        private void ExecuteDecrementLifePoints(int decrement = 100)
+        private void ExecuteModifyCounters(int modification = 1)
         {
             if (this.IsBusy)
                 return;
             this.IsBusy = true;
 
-            this.Lifepoints -= decrement;
-            this.ComposeLog("Lifepoints", "decremented", decrement);
-
-            this.IsBusy = false;
-        }
-
-        private void ExecuteIncrementCounters()
-        {
-            if (this.IsBusy)
-                return;
-            this.IsBusy = true;
-
-            this.Counters++;
-            this.ComposeLog("Counters", "incremented", 1);
-
-            this.IsBusy = false;
-        }
-
-        private void ExecuteDecrementCounters()
-        {
-            if (this.IsBusy)
-                return;
-            this.IsBusy = true;
-
-            this.Counters--;
-            this.ComposeLog("Counters", "decremented", 1);
+            var old = this.Counters;
+            this.Counters += modification;
+            this.ComposeLog("Counters", old, this.Counters);
 
             this.IsBusy = false;
         }
@@ -132,15 +115,16 @@ namespace ForceOfWillCube.ViewModels.LifeCount
             this.IsBusy = true;
 
             Random r = new Random(DateTime.Now.Millisecond);
-            this.Randomized = r.Next(1, 20);
+            var times = r.Next(1, 10);
+            for(int i = 0; i < times; i++)
+            {
+                this.Randomized = r.Next(1, 20);
+            }
 
             this.IsBusy = false;
         }
 
-        private void ComposeLog(string element, string operation, int change)
-        {
-            var logString = $"{this.Name}'s {element} {operation} by {change}";
-            App.Local.InsertLifecountLog(logString);
-        }
+        private void ComposeLog(string element, int from, int to) =>
+            App.Local.InsertLifecountLog(this.Name, element, from, to);
     }
 }

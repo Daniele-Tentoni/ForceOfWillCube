@@ -50,15 +50,21 @@
 #endif
         }
 
-        public int InsertLifecountLog(string text) =>
+        public int InsertLifecountLog(string player, string obj, int from, int to) =>
             this._database.InsertAsync(
-                new LifecountLog(text))
+                new LifecountLog
+                {
+                    Name = player,
+                    Object = obj,
+                    From = from,
+                    To = to,
+                    Registration = DateTime.Now
+                })
             .Result;
 
-        public IEnumerable<string> GetAllLifecountLogs() =>
+        public IEnumerable<LifecountLog> GetAllLifecountLogs() =>
             this._database.GetAllWithChildrenAsync<LifecountLog>().Result
-            .OrderByDescending(o => o.Registration)
-            .Select(s => s.Text);
+            .OrderByDescending(o => o.Registration);
 
         public void ClearLifecountLogs() =>
             this.GetAllLifecountLogs().ForEach(elem =>
