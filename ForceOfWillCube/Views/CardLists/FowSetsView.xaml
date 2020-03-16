@@ -15,7 +15,7 @@
                         IsTabStop="True">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Margin="5, 0, 5, 0">
+                    <StackLayout Margin="5, 0, 5, 5">
                         <Frame>
                             <Grid Margin="10,0,10,0">
                                 <Grid.ColumnDefinitions>
