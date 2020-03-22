@@ -23,22 +23,24 @@
         {
 #if DEBUG
             // Reset the database only in debug compilation mode.
-            if (File.Exists(dbPath))
-                File.Delete(dbPath);
+            if (File.Exists(this.dbPath))
+                File.Delete(this.dbPath);
 #endif
-            this._database = new SQLiteAsyncConnection(dbPath);
+            this._database = new SQLiteAsyncConnection(this.dbPath);
             this._database.CreateTableAsync<FowCard>().Wait();
             this._database.CreateTableAsync<FowCollection>().Wait();
             this._database.CreateTableAsync<CollectionCard>().Wait();
             this._database.CreateTableAsync<FowSet>().Wait();
+            this._database.CreateTableAsync<FowCluster>().Wait();
             this._database.CreateTableAsync<LifecountLog>().Wait();
 #if DEBUG
             if (this._database.Table<FowCard>().CountAsync().Result <= 0)
             {
                 Log.Warning(LOG_TAG, "A new database need to be generated.");
-                RealtimeDatabaseClient client = new RealtimeDatabaseClient();
+                var client = new RealtimeDatabaseClient();
+                var clusters = client.GetAllClusters();
                 var sets = client.GetAllSetsAsync();
-                _database.InsertOrReplaceAllWithChildrenAsync(sets);
+                this._database.InsertOrReplaceAllWithChildrenAsync(sets);
                 Log.Warning(LOG_TAG, "Database generation completed.");
             }
             else

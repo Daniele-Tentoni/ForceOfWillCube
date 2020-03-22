@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\AboutViews\" />
-    <Folder Include="Models\Sets\" />
     <Folder Include="Remotes\" />
     <Folder Include="Views\CardLists\" />
     <Folder Include="ViewModels\CardLists\" />

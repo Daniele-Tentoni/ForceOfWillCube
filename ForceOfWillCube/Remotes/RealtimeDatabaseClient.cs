@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Firebase.Database;
-using ForceOfWillCube.Models.Sets;
-using Newtonsoft.Json;
-
-namespace ForceOfWillCube.Remotes
+﻿namespace ForceOfWillCube.Remotes
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Firebase.Database;
+    using ForceOfWillCube.Models.Sets;
+
     public class RealtimeDatabaseClient
     {
         private readonly FirebaseClient firebase;
@@ -14,6 +12,17 @@ namespace ForceOfWillCube.Remotes
         public RealtimeDatabaseClient()
         {
             this.firebase = new FirebaseClient("https://forceofwillcube.firebaseio.com");
+        }
+
+        public List<FowCluster> GetAllClusters()
+        {
+            var clusters = this.firebase.Child("Clusters").OnceAsync<FowCluster>().Result;
+            return clusters.Select(item => new FowCluster
+            {
+                Id = item.Object.Id,
+                Name = item.Object.Name,
+                Sets = item.Object.Sets
+            }).ToList();
         }
 
         public List<FowSet> GetAllSetsAsync()
